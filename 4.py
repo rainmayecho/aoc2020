@@ -4,16 +4,7 @@ import re
 
 DAY = 4
 
-FIELDS = {
-    "byr",
-    "iyr",
-    "eyr",
-    "hgt",
-    "hcl",
-    "ecl",
-    "pid",
-    "cid",
-}
+FIELDS = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"}
 
 
 def solve_1(lines):
@@ -22,7 +13,7 @@ def solve_1(lines):
     for line in lines:
         line = line.replace("\n", "")
         if line == "":
-            diff = (FIELDS - buffer)
+            diff = FIELDS - buffer
             if diff == {"cid"} or diff == set():
                 n += 1
             buffer = set()
@@ -37,6 +28,7 @@ def solve_1(lines):
 
 HEIGHT_REGEX = re.compile(r"(([0-9]){2}in)|([0-9]{3}cm)")
 
+
 def height_validator(v):
     if not v:
         return False
@@ -50,6 +42,7 @@ def height_validator(v):
             return h >= 59 and h <= 76
     return False
 
+
 HCL_REGEX = re.compile(r"#[abcdef0-9]{6}")
 VALID_EYE_COLORS = {"amb", "blu", "brn", "gry", "grn", "hzl", "oth"}
 PID_REGEX = re.compile(r"[0-9]{9}")
@@ -62,8 +55,9 @@ VALIDATORS = {
     "hcl": lambda v: v and len(v) == 7 and HCL_REGEX.match(v) is not None,
     "ecl": lambda v: v in VALID_EYE_COLORS,
     "pid": lambda v: v and len(v) == 9 and PID_REGEX.match(v) is not None,
-    "cid": lambda v: True
+    "cid": lambda v: True,
 }
+
 
 def validate_passport(passport):
     for k, validate in VALIDATORS.items():
@@ -71,6 +65,7 @@ def validate_passport(passport):
             print(f"{k} validator failed for {k} = {passport.get(k)}")
             return False
     return True
+
 
 def solve_2(lines):
     data, n = {}, 0
@@ -86,6 +81,7 @@ def solve_2(lines):
             data[k] = v
     n += int(validate_passport(data))
     return n
+
 
 if __name__ == "__main__":
     with open(f"{DAY}.in", "r") as f:

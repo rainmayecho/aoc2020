@@ -5,6 +5,7 @@ DAY = 3
 R = 3
 D = 1
 
+
 def solve_1(data):
     c = 3
     x = 0
@@ -14,6 +15,7 @@ def solve_1(data):
         c += R
         c %= L
     return x
+
 
 def solve_2(data):
     L = len(data[0])
@@ -31,6 +33,7 @@ def solve_2(data):
             i += down
         p *= x
     return p
+
 
 if __name__ == "__main__":
     with open(f"{DAY}.in", "r") as f:

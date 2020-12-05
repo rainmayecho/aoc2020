@@ -2,12 +2,8 @@ from util import readfile
 
 DAY = 5
 
-test = [
-    "FBFBBFFRLR",
-    "BFFFBBFRRR",
-    "FFFBBBFRRR",
-    "BBFFBBFRLL"
-]
+test = ["FBFBBFFRLR", "BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL"]
+
 
 def solve_1(data):
     best, sids = 0, []
@@ -34,7 +30,9 @@ def solve_1(data):
         best = max(best, sid)
     return best, sids
 
+
 make_seat_id = lambda p: p[0] * 8 + p[1]
+
 
 def solve_2(sids):
     sids.sort()
@@ -47,7 +45,7 @@ def solve_2(sids):
 
 if __name__ == "__main__":
     with open(f"{DAY}.in", "r") as f:
-        data = list(readfile(f, mapper = lambda x: x[0].rstrip()))
+        data = list(readfile(f, mapper=lambda x: x[0].rstrip()))
         best, sids = solve_1(data)
         print(best)
         print(solve_2(sids))

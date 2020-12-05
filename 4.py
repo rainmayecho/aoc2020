@@ -73,13 +73,11 @@ def validate_passport(passport):
     return True
 
 def solve_2(lines):
-    data = {}
-    n = 0
+    data, n = {}, 0
     for line in lines:
         line = line.replace("\n", "")
         if line == "":
-            if validate_passport(data):
-                n += 1
+            n += int(validate_passport(data))
             data = {}
             continue
         pairs = line.split(" ")

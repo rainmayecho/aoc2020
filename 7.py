@@ -56,8 +56,6 @@ def solve_2(data):
     target = "shiny gold bags"
 
     def dfs(k):
-        if not len(G[k]):
-            return 0
         return sum((v[1] + v[1] * dfs(v[0])) for v in G[k])
 
     n = dfs(target)

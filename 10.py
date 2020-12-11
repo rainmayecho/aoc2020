@@ -29,7 +29,7 @@ def solve_2(data):
 
 
 if __name__ == "__main__":
-    with open(f"{DAY}.in", "r") as f:
+    with open(f"{DAY}test.in", "r") as f:
         data = [int(line.rstrip()) for line in f]
         print(solve_1(data))
         print(solve_2(data))

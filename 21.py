@@ -1,10 +1,7 @@
 from util import readfile
-import re
 from collections import defaultdict
 
 DAY = 21
-
-LINE_REGEX = re.compile(r"(.*\s)+ \(contains \((.*,?\s?)+\)")
 
 
 def solve_1(data):
@@ -31,11 +28,11 @@ def solve_1(data):
         remove = set()
         for k, v in list(G.items()):
             if len(v) == 1:
-                res[list(v)[0]] = k
+                res[[*v][0]] = k
                 remove |= v
         for k in G:
             G[k] -= remove
-    print(",".join(e[0] for e in sorted(res.items(), key=lambda e: e[1])))
+    return ",".join(e[0] for e in sorted(res.items(), key=lambda e: e[1]))
 
 
 def solve_2():

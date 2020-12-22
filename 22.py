@@ -23,12 +23,7 @@ def solve_1(data):
             p2.append(p2.pop(0))
             p2.append(p1.pop(0))
 
-    s = None
-    if p1:
-        s = p1
-    else:
-        s = p2
-    print(sum((i + 1) * c for i, c in enumerate(reversed(s))))
+    print(sum((i + 1) * c for i, c in enumerate(reversed(max(p1, p2, key=len)))))
 
     def subgame(p1, p2, n=1):
         seen = defaultdict(set)
